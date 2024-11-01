@@ -1,4 +1,4 @@
-import os, argparse
+import os, argparse, dotenv
 
 parse = argparse.ArgumentParser("run code")
 parse.add_argument("prog", type=str, help="compiler/interpreter to use for runing your code [g++, python (py), node, ]")
@@ -6,11 +6,12 @@ parse.add_argument("-i", "--index", type=int, help="index of an element of a sor
 parse.add_argument("-n", "--name", type=str, help="name of an file of a sorted list")
 parse.add_argument("-a", "--arguments", type=str, help="extra argumensts")
 
+dotenv.load_dotenv()
 
-PYTHON_PATH = "/home/leonix/Programming/python/venv/bin/python"
-CPP_PATH = "g++"
-NODE_PATH = "node"
-RUST_PATH = "cargo"
+PYTHON_PATH = os.getenv("PYTHON_PATH")
+CPP_PATH = os.getenv("CPP_PATH")
+NODE_PATH = os.getenv("NODE_PATH")
+RUST_PATH = os.getenv("RUST_PATH")
 
 
 PY = ["python", "py"]
